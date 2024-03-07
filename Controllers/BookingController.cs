@@ -25,17 +25,11 @@ public class BookingController : ControllerBase
             return filmList;
         }
 
-        // GET api/<BookingController>/5
-        [HttpGet("{id}")]
-    public string Get(int id)
-    {
-        return "value";
-    }
-
         // POST api/<BookingController>
         [HttpPost]
-    public void Post([FromBody] string value)
+    public void CreateSession([FromBody] string value)
     {
+             
     }
 
         // PUT api/<BookingController>/5
