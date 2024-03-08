@@ -1,47 +1,56 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using qaeducationbackend.Dal.Model;
+using qaeducationbackend.Dal.Repository.Interface;
+using qaeducationbackend.Logic.Constants;
 using qaeducationbackend.Logic.Managers;
-using qaeducationbackend.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace qaeducationbackend.Controllers
 {
-[Route("api/booking")]
-[ApiController]
-public class BookingController : ControllerBase
+    [Route("api/booking")]
+    [ApiController]
+    public class BookingController : ControllerBase
     {
+        private readonly ISessionRepository _sessionRepository;
+
+        public BookingController(ISessionRepository sessionRepository)
+        {
+            _sessionRepository = sessionRepository;
+        }
+
         // GET: /list
         [HttpGet("/list/session")]
         public List<SessionModel> GetSession()
         {
-            var sessionModelList = new List<SessionModel>() { new(), new(), new(), new() };
-            return sessionModelList;
+           return _sessionRepository.GetList();
         }
+
         // GET: api/list/film
         [HttpGet("/list/film")]
         public List<FilmModel> GetFilms()
         {
-            var filmList = new FilmManager().ListFilm;
-            return filmList;
+            return FilmConst.Films;
         }
 
         // POST api/<BookingController>
         [HttpPost]
-    public void CreateSession([FromBody] string value)
-    {
-             
-    }
+        public void CreateSession([FromBody] string value)
+        {
+            // внутри нет логики
+            _sessionRepository.Add();
+        }
 
         // PUT api/<BookingController>/5
         [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
-    {
-    }
+        public void Put(int id, [FromBody] string value)
+        {
+        }
 
         // DELETE api/<BookingController>/5
         [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
+        public void Delete(int id)
+        {
+        }
     }
-}
 }

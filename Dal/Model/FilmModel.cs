@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace qaeducationbackend.Model
+﻿namespace qaeducationbackend.Dal.Model
 {
     public class FilmModel(int id, string name, int ageRate, bool isEnabled)
     {
