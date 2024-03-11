@@ -45,22 +45,11 @@ namespace qaeducationbackend.Dal.Repository
             return context.Sessons.Include(t=> t.Film).ToList();
         }
 
-        public void Add()
+        public void Add(SessionModel value)
         {
-            // как пример
-
-            /*using var context = new ApiDbContext();
-            var sessions = new List<SessionModel>
-            {
-                new SessionModel
-                {
-                    Id = 2,
-                    ClientName = "suka111",
-                    Film = new(2, "Тители111", 12, true)
-                },
-            };
-            context.Sessons.AddRange(sessions);
-            context.SaveChanges();*/
+            using var context = new ApiDbContext();
+            context.Sessons.AddRange(value);
+            context.SaveChanges();
         }
     }
 }

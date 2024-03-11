@@ -8,6 +8,6 @@ namespace qaeducationbackend.Dal.Repository.Interface
 
        public List<SessionModel> GetList();
 
-       public void Add();
+       public void Add(SessionModel value);
     }
 }

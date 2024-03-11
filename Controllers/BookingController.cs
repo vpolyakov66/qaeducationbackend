@@ -35,10 +35,9 @@ namespace qaeducationbackend.Controllers
 
         // POST api/<BookingController>
         [HttpPost]
-        public void CreateSession([FromBody] string value)
+        public void CreateSession([FromBody] SessionModel value)
         {
-            // внутри нет логики
-            _sessionRepository.Add();
+            _sessionRepository.Add(value);
         }
 
         // PUT api/<BookingController>/5

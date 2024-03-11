@@ -1,4 +1,5 @@
-﻿namespace qaeducationbackend.Dal.Model
+﻿
+namespace qaeducationbackend.Dal.Model
 {
     public class SessionModel
     {
@@ -6,5 +7,10 @@
         public DateTime SessionDate { get; set; }
         public string ClientName { get; set; }
         public FilmModel Film { get; set; }
+
+        public static implicit operator List<object>(SessionModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
