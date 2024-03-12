@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using qaeducationbackend.Dal.Repository;
 using qaeducationbackend.Dal.Repository.Interface;
 
@@ -30,3 +31,8 @@ app.MapControllers();
 }
 
 app.Run();
+
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
