@@ -11,14 +11,27 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ISessionRepository, SessionRepository>();
 
+
 var app = builder.Build();
 
+/*
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+*/
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+
+app.UseSwaggerUI();
 
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
 
 app.UseAuthorization();
 
@@ -30,8 +43,3 @@ app.MapControllers();
 }
 
 app.Run();
-
-app.UseForwardedHeaders(new ForwardedHeadersOptions
-{
-    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-});
