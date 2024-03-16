@@ -26,6 +26,8 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 
+app.UseCors(builder => builder.AllowAnyOrigin());
+
 //app.UseHttpsRedirection();
 
 app.UseForwardedHeaders(new ForwardedHeadersOptions
