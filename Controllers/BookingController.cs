@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using qaeducationbackend.Dal.Model;
 using qaeducationbackend.Dal.Repository.Interface;
 using qaeducationbackend.Logic.Constants;
@@ -9,6 +10,7 @@ using qaeducationbackend.Logic.Managers;
 namespace qaeducationbackend.Controllers
 {
     [Route("api/booking")]
+    [EnableCors]
     [ApiController]
     public class BookingController : ControllerBase
     {
@@ -34,6 +36,7 @@ namespace qaeducationbackend.Controllers
         }
 
         // POST api/<BookingController>
+        [EnableCors]
         [HttpPost]
         public void CreateSession([FromBody] SessionModel value)
         {
