@@ -11,6 +11,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ISessionRepository, SessionRepository>();
 
+builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowed((_) => true)
+                        .AllowCredentials();
+                }));
 
 var app = builder.Build();
 
@@ -28,14 +36,7 @@ app.UseSwaggerUI();
 
 //app.UseCors(builder => builder.AllowAnyOrigin());
 
-builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
-                builder =>
-                {
-                    builder.AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .SetIsOriginAllowed((_) => true)
-                        .AllowCredentials();
-                }));
+
 
 //app.UseHttpsRedirection();
 
