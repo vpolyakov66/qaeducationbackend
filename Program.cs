@@ -26,7 +26,16 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 
-app.UseCors(builder => builder.AllowAnyOrigin());
+//app.UseCors(builder => builder.AllowAnyOrigin());
+
+builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowed((_) => true)
+                        .AllowCredentials();
+                }));
 
 //app.UseHttpsRedirection();
 
