@@ -1,4 +1,6 @@
-﻿namespace qaeducationbackend.Dal.Model
+﻿using Microsoft.Extensions.Hosting;
+
+namespace qaeducationbackend.Dal.Model
 {
     public class FilmModel(int id, string name, int ageRate, bool isEnabled)
     {
@@ -6,5 +8,7 @@
         public  string Name { get; set; } = name;
         public int AgeRate { get; set; } = ageRate;
         public bool IsEnabled { get; set; } = isEnabled;
+
+        public ICollection<SessionModel> Sessions { get; } = new List<SessionModel>();
     }
 }
